@@ -139,131 +139,120 @@ public class HydMetro {
        Scanner sc=new Scanner(System.in);
        System.out.println("\n\t\t\t****WELCOME TO THE HYDERABAD METRO*****");
 
-        while(true)
-		{
-				System.out.println("\t\t\t\t\nLIST OF ACTIONS\n");
-				System.out.println("1. LIST ALL THE STATIONS IN THE MAP");
-				System.out.println("2. GET SHORTEST DISTANCE FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-				System.out.println("3. GET SHORTEST TIME TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-				System.out.println("4. GET FARE TO TRAVEL FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-				System.out.println("5. GET SHORTEST PATH (DISTANCE WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-				System.out.println("6. GET SHORTEST PATH (TIME WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-				System.out.println("7. EXIT THE MENU");
-				System.out.print("\nENTER YOUR CHOICE FROM THE ABOVE LIST (1 to 7) : ");
-				int choice = -1;
+        while(true){
+	        System.out.println("\t\t\t\t\nLIST OF ACTIONS\n");
+	        System.out.println("1. LIST ALL THE STATIONS IN THE MAP");
+	        System.out.println("2. GET SHORTEST DISTANCE FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+	        System.out.println("3. GET SHORTEST TIME TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+                System.out.println("4. GET FARE TO TRAVEL FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+		System.out.println("5. GET SHORTEST PATH (DISTANCE WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+		System.out.println("6. GET SHORTEST PATH (TIME WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+		System.out.println("7. EXIT THE MENU");
+		System.out.print("\nENTER YOUR CHOICE FROM THE ABOVE LIST (1 to 7) : ");
+		int choice = -1;
                 String str1="";
                 String str2="";
                 String str3="";
                 int a;
                 int b;
-				try {
-					choice = sc.nextInt();
-				} catch(Exception e) {
+		try {
+		        choice = sc.nextInt();
+		} catch(Exception e) {
 		          
-				}
-				System.out.print("\n***********************************************************\n");
-				if(choice == 7)
-				{
-					System.exit(0);
-				}
-				switch(choice)
-				{
-				case 1:
-                   display_Map();
-                   break;
-			
-				case 2:
-                    System.out.println("enter source station");
-                    a=sc.nextInt();
-                    System.out.println("enter destination station");
-                    b=sc.nextInt();
-                    float val=dijkstra(graph,a,b);
-                    if(val==-1){
-                        System.out.println("\nThere are no such stations exists");
-                        break;
-                    }
-                    str1=Stations.get(a);
-                    str2=Stations.get(b);
-                    System.out.println("The shortest distance from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+val+" KM");
-                    break;
-				
-				case 3:
-                    System.out.println("enter source station");
-                    a=sc.nextInt();
-                    System.out.println("enter destination station");
-                    b=sc.nextInt();
-                    int num=dijkstraTime(graph,a,b);
-                    if(num==-1){
-                        System.out.println("\nThere are no such stations exists");
-                        break;
-                    }
-                    str1=Stations.get(a);
-                    str2=Stations.get(b);
-                    System.out.println("The shortest time taken to travel from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+num+" Min");
-                    break;
-				case 4:
-                    System.out.println("enter source station");
-                    a=sc.nextInt();
-                    System.out.println("enter destination station");
-                    b=sc.nextInt();
-                    int count=travelCost(graph,a,b);
-                    str1=Stations.get(a);
-                    str2=Stations.get(b);
-                    System.out.println("The fare to travel from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+count+" INR");
-                    break;
-				case 5:
-                    System.out.println("enter source station");
-                    a=sc.nextInt();
-                    System.out.println("enter destination station");
-                    b=sc.nextInt();
-                    List<Integer> pathList=shortestDistPath(graph, a,b);
-                    str1=Stations.get(a);
-                    str2=Stations.get(b);
-                    System.out.println("The shortest path from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" according to Distance is:\n");
-                    for(int li:pathList){
-                        str3=Stations.get(li);
-                        if(li== pathList.get(pathList.size()-1)){
-                            System.out.print(str3.substring(0,str3.length()-2)+"\n");
-                        }else{
-                            System.out.print(str3.substring(0,str3.length()-2)+"->");
-                        }
-                    }
-                    break;
-				case 6:
-                    System.out.println("enter source station");
-                    a=sc.nextInt();
-                    System.out.println("enter destination station");
-                    b=sc.nextInt();
-					List<Integer> list=shortestTimePath(graph, a,b);
-                    str1=Stations.get(a);
-                    str2=Stations.get(b);
-                    System.out.println("The shortest path from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" according to Time is:\n");
-                    for(int li:list){
-                        str3=Stations.get(li);
-                        if(li== list.get(list.size()-1)){
-                            System.out.print(str3.substring(0,str3.length()-2)+"\n");
-                        }else{
-                            System.out.print(str3.substring(0,str3.length()-2)+"->");
-                        }
-                    }
-					break;	
-               	        default:
-                    	    System.out.println("Please enter a valid option! ");
-                        	System.out.println("The options you can choose are from 1 to 6. ");
-                            
-				}
 		}
+		System.out.print("\n***********************************************************\n");
+		if(choice == 7)
+		{
+		        System.exit(0);
+		}
+		switch(choice)
+		{
+		   case 1:
+                        display_Map();
+                        break;	
+		   case 2:
+                        System.out.println("enter source station");
+                        a=sc.nextInt();
+                        System.out.println("enter destination station");
+                        b=sc.nextInt();
+                        float val=dijkstra(graph,a,b);
+                        if(val==-1){
+                                System.out.println("\nThere are no such stations exists");
+                                break;
+                        }
+                        str1=Stations.get(a);
+                        str2=Stations.get(b);
+                        System.out.println("The shortest distance from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+val+" KM");
+                        break;
+				
+		    case 3:
+                        System.out.println("enter source station");
+                        a=sc.nextInt();
+                        System.out.println("enter destination station");
+                        b=sc.nextInt();
+                        int num=dijkstraTime(graph,a,b);
+                        if(num==-1){
+                                System.out.println("\nThere are no such stations exists");
+                                break;
+                        }
+                        str1=Stations.get(a);
+                        str2=Stations.get(b);
+                        System.out.println("The shortest time taken to travel from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+num+" Min");
+                        break;
+		    case 4:
+                        System.out.println("enter source station");
+                        a=sc.nextInt();
+                        System.out.println("enter destination station");
+                        b=sc.nextInt();
+                        int count=travelCost(graph,a,b);
+                        str1=Stations.get(a);
+                        str2=Stations.get(b);
+                        System.out.println("The fare to travel from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" is:"+count+" INR");
+                        break;
+		    case 5:
+                        System.out.println("enter source station");
+                        a=sc.nextInt();
+                        System.out.println("enter destination station");
+                        b=sc.nextInt();
+                        List<Integer> pathList=shortestDistPath(graph, a,b);
+                        str1=Stations.get(a);
+                        str2=Stations.get(b);
+                        System.out.println("The shortest path from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" according to Distance is:\n");
+                        for(int li:pathList){
+                            str3=Stations.get(li);
+                            if(li== pathList.get(pathList.size()-1)){
+                                System.out.print(str3.substring(0,str3.length()-2)+"\n");
+                            }else{
+                                System.out.print(str3.substring(0,str3.length()-2)+"->");
+                            }
+                         }
+                        break;
+		    case 6:
+                        System.out.println("enter source station");
+                        a=sc.nextInt();
+                        System.out.println("enter destination station");
+                        b=sc.nextInt();
+			List<Integer> list=shortestTimePath(graph, a,b);
+                        str1=Stations.get(a);
+                        str2=Stations.get(b);
+                        System.out.println("The shortest path from "+str1.substring(0,str1.length()-2)+" to "+str2.substring(0,str2.length()-2)+" according to Time is:\n");
+                        for(int li:list){
+                            str3=Stations.get(li);
+                            if(li== list.get(list.size()-1)){
+                               System.out.print(str3.substring(0,str3.length()-2)+"\n");
+                             }else{
+                                  System.out.print(str3.substring(0,str3.length()-2)+"->");
+                             }
+                        }
+			break;	
+               	    default:
+                    	System.out.println("Please enter a valid option! ");
+                        System.out.println("The options you can choose are from 1 to 6. ");         
+		}
+	}
 
     }
-    public static void display_Stations(){
-        System.out.println("List of all metro stations");
-        System.out.println();
-        for(int key:Stations.keySet()){
-            String stat=Stations.get(key);
-            System.out.println(key+"\t"+ stat.substring(0, stat.length()-2) );
-        }
-        System.out.print("\n***********************************************************\n");
-    }
+	
     public static void display_Map(){
         System.out.println("\n\t\t\tWELCOME TO HYDERABAD METRO MAP");
         System.out.println("\nRED LINE STATIONS\n");
@@ -309,6 +298,7 @@ public class HydMetro {
             return  (int)(this.wt-p2.wt);
         }
     }
+	
     public static float dijkstra(ArrayList<Edge>graph[],int src,int target)
     {
         if(!Stations.containsKey(src) || !Stations.containsKey(target)){
@@ -350,6 +340,7 @@ public class HydMetro {
        }
        return distance[target];
     }
+	
     public static int dijkstraTime(ArrayList<Edge>graph[],int src,int target)
     {
         if(!Stations.containsKey(src) || !Stations.containsKey(target)){
@@ -391,6 +382,7 @@ public class HydMetro {
        }
        return times[target];
     }
+	
     public static int travelCost(ArrayList<Edge>graph[],int src,int target){
         float len=dijkstra(graph, src, target);
         if(len>0 && len<=2) return 10;
@@ -459,6 +451,7 @@ public class HydMetro {
         Collections.reverse(path); 
         return path;
     }
+	
     public static List<Integer> shortestTimePath(ArrayList<Edge> graph[],int src, int target) {
         int n=graph.length;
         List<Integer> path = new ArrayList<>();
